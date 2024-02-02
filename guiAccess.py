@@ -2,12 +2,37 @@ import PySimpleGUI as sg
 import databaseComms as dc
 import sqlite3
 
+
+# Add your new theme colors and settings
+utc = {'BACKGROUND': '#00A09A',
+                'TEXT': '#FFD100',
+                'INPUT': '#260E61',
+                'TEXT_INPUT': '#FFFFFF',
+                'SCROLL': '#260E61',
+                'BUTTON': ('white', '#260E61'),
+                'PROGRESS': ('#01826B', '#D0D0D0'),
+                'BORDER': 1,
+                'SLIDER_DEPTH': 0,
+                'PROGRESS_DEPTH': 0}
+
+# Add your dictionary to the PySimpleGUI themes
+sg.theme_add_new('utc', utc)
+
+# Switch your theme to use the newly added one. You can add spaces to make it more readable
+sg.theme('utc')
+
+
+
+
+
+
 # Connect to the database
 conn = sqlite3.connect('NEF.db')
 
 def create_main_menu_layout():
     layout = [
-        [sg.Text('Student Management System', size=(30,1), font=("Helvetica", 25))],
+        [sg.Image('logo.png')],
+        [sg.Text('NEF Student Stamp Management System', size=(32,1), font=("Helvetica", 25))],
         [sg.Button('Add Student'), sg.Button('Award Stamps'), sg.Button('View Student')]
     ]
     return layout
@@ -46,7 +71,7 @@ def create_award_stamps_layout():
 
 def add_student_window():
     layout = create_add_student_layout()
-    window = sg.Window('Add Student', layout)
+    window = sg.Window('Add Student', layout, element_justification='c', icon="logo.ico")
     while True:
         event, values = window.read()
         if event == sg.WIN_CLOSED:
@@ -57,13 +82,13 @@ def add_student_window():
             break
         if event == 'Back':
             window.close()
-            window = sg.Window('Main Menu', create_main_menu_layout())
+            window = sg.Window('Main Menu', create_main_menu_layout(), element_justification='c', icon="logo.ico")
             break
     window.close()
 
 def award_stamps_window():
     layout = create_award_stamps_layout()
-    window = sg.Window('Award Stamps', layout)
+    window = sg.Window('Award Stamps', layout, element_justification='c', icon="logo.ico")
     while True:
         event, values = window.read()
         if event == sg.WIN_CLOSED:
@@ -74,33 +99,34 @@ def award_stamps_window():
             break
         if event == 'Back':
             window.close()
-            window = sg.Window('Main Menu', create_main_menu_layout())
+            window = sg.Window('Main Menu', create_main_menu_layout(), element_justification='c', icon="logo.ico")
             break
     window.close()
 
 def view_student_window():
     layout = create_view_student_layout()
-    window = sg.Window('View Student', layout)
+    window = sg.Window('View Student', layout, element_justification='c', icon="logo.ico")
     while True:
         event, values = window.read()
         if event == sg.WIN_CLOSED:
             break
         if event == 'View':
             result = dc.view_student(values['email_pref'])
-            sg.popup(result)
+            sg.popup("Student name: ", result[0],"\nStamp total: ", result[2],"\nForm class: ", result[1],"\nClass: ", result[4], icon="logo.ico")
             break
         if event == 'Back':
             window.close()
-            window = sg.Window('Main Menu', create_main_menu_layout())
+            window = sg.Window('Main Menu', create_main_menu_layout(), element_justification='c', icon="logo.ico")
             break
     window.close()
 
 layout = [
-    [sg.Text('Student Management System', size=(30,1), font=("Helvetica", 25))],
+    [sg.Image('logo.png')],
+    [sg.Text('NEF Student Stamp Management System', size=(32,1), font=("Helvetica", 25))],
     [sg.Button('Add Student'), sg.Button('Award Stamps'), sg.Button('View Student')]
 ]
 
-window = sg.Window('Main Menu', layout)
+window = sg.Window('Main Menu', layout, element_justification='c', icon="logo.ico")
 
 state = "main_menu"
 
@@ -121,7 +147,7 @@ while True:
         if event == 'Back':
             state = "main_menu"
             window.close()
-            window = sg.Window('Main Menu', create_main_menu_layout())
+            window = sg.Window('Main Menu', create_main_menu_layout(), element_justification='c', icon="logo.ico")
 
 conn.close()
 
