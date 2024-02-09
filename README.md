@@ -54,8 +54,7 @@ pip3 install pysimplegui
 git clone https://github.com/Jack-Lowe-7/DWP-Project.git
 ```
 
-3. a. For the GUI, run the ```guiAccess.py``` script 
-b. For console, run the ```consoleAccess.py``` script
+3. a. For the GUI, run the ```guiAccess.py``` script<br>b. For console, run the ```consoleAccess.py``` script
 
 
 
