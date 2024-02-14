@@ -69,4 +69,3 @@ Distributed under the MIT License. See [LICENSE](https://github.com/jack-lowe-7/
 ## Acknowledgements
 
 * [README Generator](https://github.com/ShaanCoding/ReadME-Generator)
-* [Site template generated with Appseed](https://appseed.us/generator/)
