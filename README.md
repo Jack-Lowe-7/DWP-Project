@@ -3,7 +3,7 @@
   <a href="https://github.com/jack-lowe-7/DWP-Project">
     <img src="logo.png" alt="Logo" width="80" height="80">
   </a>
-
+  <h1 align="center">StampWorks</h1>
   <h3 align="center">DWP Stamp Redesign Project</h3>
 
   <p align="center">
