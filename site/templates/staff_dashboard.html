@@ -1,0 +1,23 @@
+<!-- staff_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+</head>
+<body>
+    <h2>Welcome {{ staff_info[1] }}</h2>
+    <p>Username: {{ staff_info[2] }}</p>
+    <p>Email: {{ staff_info[3] }}</p>
+    <form action="/modify_stamps" method="post">
+        <label for="user_id">User ID:</label><br>
+        <input type="text" id="user_id" name="user_id" required><br>
+        <label for="stamps">Stamps:</label><br>
+        <input type="text" id="stamps" name="stamps" required><br>
+        <input type="submit" value="Modify Stamps">
+    </form>
+    <br>
+    <a href="/logout">Logout</a>
+</body>
+</html>
