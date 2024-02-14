@@ -29,11 +29,13 @@ import axios from 'axios';
 // project imports
 import useScriptRef from '../../../../hooks/useScriptRef';
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
-import { ACCOUNT_INITIALIZE } from './../../../../store/actions';
+import { ACCOUNT_INITIALIZE } from '../../../../store/actions';
 
 // assets
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
+const data = ""
 
 // style constant
 const useStyles = makeStyles((theme) => ({
