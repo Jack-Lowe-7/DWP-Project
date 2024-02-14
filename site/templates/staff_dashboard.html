@@ -10,6 +10,13 @@
     <h2>Welcome {{ staff_info[1] }}</h2>
     <p>Username: {{ staff_info[2] }}</p>
     <p>Email: {{ staff_info[3] }}</p>
+
+    <p>Debugging Info:</p>
+    <pre>
+        {{ staff_info }}
+        {{ session }}
+    </pre>
+
     <form action="/modify_stamps" method="post">
         <label for="user_id">User ID:</label><br>
         <input type="text" id="user_id" name="user_id" required><br>

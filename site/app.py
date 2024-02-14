@@ -1,65 +1,56 @@
-# app.py
-from flask import Flask, render_template, request, session, redirect, url_for
-import databaseComms as dc
+from flask import Flask, render_template, request, redirect, url_for, session
+from databaseComms import authenticate_staff, authenticate_student
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = 'your_secret_key'  # Change this to a secure secret key
 
-# Function to check if the user is logged in
-def is_logged_in():
-    return 'user_id' in session
-
-# Route for staff login
+# Route for logging in
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
-        user = dc.authenticate_user(username, password)
-        if user and user['is_staff']:
-            session['user_id'] = user['id']
+        
+        # Check if staff user
+        staff_info = authenticate_staff(email, password)
+        if staff_info:
+            session['email'] = email
+            session['is_staff'] = True
             return redirect(url_for('staff_dashboard'))
-        elif user:
-            session['user_id'] = user['id']
+        
+        # Check if student user
+        student_info = authenticate_student(email, password)
+        if student_info:
+            session['email'] = email
+            session['is_staff'] = False
             return redirect(url_for('student_dashboard'))
-        else:
-            error = 'Invalid login'
-            return render_template('login.html', error=error)
+        
+        # If authentication fails, show error message
+        error = "Invalid email or password. Please try again."
+        return render_template('login.html', error=error)
+    
+    # If GET request, render login form
     return render_template('login.html')
 
 # Route for staff dashboard
 @app.route('/staff/dashboard')
 def staff_dashboard():
-    if not is_logged_in():
+    if 'email' not in session or 'is_staff' not in session or not session['is_staff']:
         return redirect(url_for('login'))
-    # Fetch staff information using session['user_id']
-    staff_info = dc.get_staff_info(session['user_id'])
-    return render_template('staff_dashboard.html', staff_info=staff_info)
-
-# Route for modifying stamps
-@app.route('/modify_stamps', methods=['POST'])
-def modify_stamps():
-    if not is_logged_in():
-        return redirect(url_for('login'))
-    emailPre = request.form['emailPre']
-    stamps = request.form['stamps']
-    # Call function from dc.py to modify stamps
-    dc.modify_user_stamps(emailPre, stamps)
-    return redirect(url_for('staff_dashboard'))
+    return render_template('staff_dashboard.html')
 
 # Route for student dashboard
 @app.route('/student/dashboard')
 def student_dashboard():
-    if not is_logged_in():
+    if 'email' not in session or 'is_staff' not in session or session['is_staff']:
         return redirect(url_for('login'))
-    # Fetch student information using session['user_id']
-    student_info = dc.get_student_info(session['user_id'])
-    return render_template('student_dashboard.html', student_info=student_info)
+    return render_template('student_dashboard.html')
 
-# Logout route
+# Route for logging out
 @app.route('/logout')
 def logout():
-    session.clear()
+    session.pop('email', None)
+    session.pop('is_staff', None)
     return redirect(url_for('login'))
 
 if __name__ == '__main__':

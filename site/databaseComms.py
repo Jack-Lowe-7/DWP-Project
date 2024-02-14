@@ -34,36 +34,27 @@ def view_student(emailpre):
 
 
 
-# Function to authenticate user
-def authenticate_user(emailpre, password):
-    conn = sqlite3.connect(dbSelect())
+def authenticate_staff(email, password):
+    conn = sqlite3.connect('your_database.db')
     c = conn.cursor()
-
-    # Query staff table
-    c.execute("SELECT * FROM staff WHERE emailpre=? AND password=?", (emailpre, password))
-    staff_user = c.fetchone()
-    if staff_user:
-        # User is staff
-        user_info = {'id': staff_user[0], 'emailpre': staff_user[1], 'is_staff': True}
-    else:
-        # Query regular users table
-        c.execute("SELECT * FROM students WHERE emailpre=? AND password=?", (emailpre, password))
-        regular_user = c.fetchone()
-        if regular_user:
-            # User is not staff
-            user_info = {'id': regular_user[0], 'password': regular_user[1], 'is_staff': False}
-        else:
-            # No user found
-            user_info = None
-
+    c.execute("SELECT name, form, emailpre FROM staff WHERE emailpre=? AND password=?", (email, password))
+    staff_info = c.fetchone()
     conn.close()
-    return user_info
+    return staff_info
+
+def authenticate_student(email, password):
+    conn = sqlite3.connect('your_database.db')
+    c = conn.cursor()
+    c.execute("SELECT name, form, stamps, emailpre, mainclass FROM students WHERE emailpre=? AND password=?", (email, password))
+    student_info = c.fetchone()
+    conn.close()
+    return student_info
 
 # Function to get staff information
 def get_staff_info(emailpre):
     conn = sqlite3.connect(dbSelect())
     c = conn.cursor()
-    c.execute("SELECT * FROM staff WHERE emailpre=?", (emailpre,))
+    c.execute("SELECT name, form, emailpre FROM staff WHERE emailpre=?", (emailpre,))
     staff_info = c.fetchone()
     conn.close()
     return staff_info
@@ -80,7 +71,7 @@ def modify_user_stamps(emailpre, stamps):
 def get_student_info(emailpre):
     conn = sqlite3.connect(dbSelect())
     c = conn.cursor()
-    c.execute("SELECT * FROM students WHERE emailpre=?", (emailpre,))
+    c.execute("SELECT name, form, stamps, emailpre, mainclass FROM students WHERE emailpre=?", (emailpre,))
     student_info = c.fetchone()
     conn.close()
     return student_info
