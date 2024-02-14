@@ -7,113 +7,150 @@ conn = sqlite3.connect('NEF.db')
 c = conn.cursor()
 
 # Create a table
-c.executescript('''create table students (
-	name TEXT,
-	form TEXT,
-	stamps INTEGER,
-	emailPre TXT PRIMARY KEY UNIQUE,
-	mainClass TEXT
+c.executescript("""create table students (
+	name VARCHAR(50),
+	form VARCHAR(7),
+	stamps INT,
+	emailpre VARCHAR(50),
+	mainclass VARCHAR(6),
+	password VARCHAR(50)
 );
-insert into students (name, form, stamps, emailPre, mainClass) values ('Lilias Rugg', 'Newton', 201, '19lilias.r', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Muriel Vardon', 'Pasteur', 283, '19muriel.v', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Mickie Ashwin', 'Maxwell', 826, '19mickie.a', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Pasquale Dickins', 'Maxwell', 404, '19pasquale.d', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Archie Stallworth', 'Newton', 25, '19archie.s', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Cherey Garner', 'Newton', 370, '19cherey.g', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Scotti Hay', 'Newton', 725, '19scotti.h', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Michal Withers', 'Newton', 885, '19michal.w', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Anallese Pilipets', 'Maxwell', 935, '19anallese.p', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Hayden Lackmann', 'Maxwell', 194, '19hayden.l', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Rickey de Cullip', 'Pasteur', 316, '19rickey.d', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Kathryn O''Keevan', 'Newton', 983, '19kathryn.o', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Lynna Banger', 'Pasteur', 341, '19lynna.b', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Antoni Di Biaggi', 'Pasteur', 163, '19antoni.d', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Leena Heal', 'Maxwell', 237, '19leena.h', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Ranna Prendergrass', 'Pasteur', 449, '19ranna.p', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Randee Humberstone', 'Pasteur', 40, '19randee.h', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Howey Eye', 'Newton', 202, '19howey.e', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Lebbie Hulls', 'Maxwell', 777, '19lebbie.h', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Keelby Newbatt', 'Maxwell', 277, '19keelby.n', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Sarajane Hull', 'Maxwell', 32, '19sarajane.h', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Arabela Ales', 'Pasteur', 427, '19arabela.a', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Alyce MacNab', 'Maxwell', 823, '19alyce.m', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Annadiana Ever', 'Pasteur', 451, '19annadiana.e', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Margy Kitteman', 'Pasteur', 657, '19margy.k', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Harv Heeps', 'Pasteur', 194, '19harv.h', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Morena Cadogan', 'Newton', 773, '19morena.c', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Addia McGuire', 'Maxwell', 769, '19addia.m', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Flynn Brodeau', 'Pasteur', 346, '19flynn.b', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Odelia Lannen', 'Pasteur', 722, '19odelia.l', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Giacobo Rothwell', 'Maxwell', 71, '19giacobo.r', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Denny Castaner', 'Newton', 571, '19denny.c', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Francine Gladyer', 'Maxwell', 179, '19francine.g', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Sibley Chafer', 'Maxwell', 637, '19sibley.c', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Ezmeralda Kiessel', 'Maxwell', 929, '19ezmeralda.k', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Barbra Jeromson', 'Maxwell', 161, '19barbra.j', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Yancey Wykey', 'Pasteur', 213, '19yancey.w', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Marquita Uccello', 'Newton', 100, '19marquita.u', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Lianna McGregor', 'Pasteur', 354, '19lianna.m', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Cobbie Hatton', 'Pasteur', 709, '19cobbie.h', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Peg Hort', 'Newton', 547, '19peg.h', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Juditha Aps', 'Maxwell', 973, '19juditha.a', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Adelbert Ashworth', 'Pasteur', 73, '19adelbert.a', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Sharon Paridge', 'Maxwell', 603, '19sharon.p', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Bale McCarrell', 'Pasteur', 679, '19bale.m', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Killy Scain', 'Maxwell', 496, '19killy.s', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Guss Arnout', 'Maxwell', 136, '19guss.a', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Tobiah Basilio', 'Maxwell', 18, '19tobiah.b', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Julienne Pascho', 'Newton', 915, '19julienne.p', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Linn Schonfelder', 'Newton', 137, '19linn.s', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Neila Plaid', 'Newton', 25, '19neila.p', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Joane Sigward', 'Newton', 100, '19joane.s', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Madeleine Penner', 'Pasteur', 238, '19madeleine.p', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Vlad Lafflina', 'Newton', 204, '19vlad.l', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Nelle Kumar', 'Newton', 900, '19nelle.k', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Cherey Blackledge', 'Pasteur', 108, '19cherey.b', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Arney Lasslett', 'Pasteur', 43, '19arney.l', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Karole Titchmarsh', 'Maxwell', 295, '19karole.t', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Ignaz Baxill', 'Newton', 513, '19ignaz.b', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Dave Meddemmen', 'Newton', 339, '19dave.m', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Kiah Yegorev', 'Newton', 741, '19kiah.y', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Clevey Dalyell', 'Pasteur', 772, '19clevey.d', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Dolph Mickelwright', 'Maxwell', 63, '19dolph.m', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Gregoire Cherrison', 'Newton', 840, '19gregoire.c', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Wilton Urion', 'Maxwell', 719, '19wilton.u', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Martin O''Neil', 'Newton', 924, '19martin.o', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Randi Napoli', 'Newton', 871, '19randi.n', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Rudyard Dunphy', 'Newton', 689, '19rudyard.d', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Norah Wavell', 'Newton', 188, '19norah.w', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Kelby Abeau', 'Pasteur', 760, '19kelby.a', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Husein Matt', 'Maxwell', 428, '19husein.m', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Augustus Bowyer', 'Pasteur', 18, '19augustus.b', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Washington Barbey', 'Pasteur', 443, '19washington.b', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Kelli Croyden', 'Newton', 400, '19kelli.c', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Esme Delap', 'Newton', 874, '19esme.d', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Lesya Buntain', 'Maxwell', 985, '19lesya.b', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Patrizia Twinterman', 'Maxwell', 853, '19patrizia.t', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Margie MacTrustey', 'Newton', 470, '19margie.m', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Meghann Melpuss', 'Pasteur', 736, '19meghann.m', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Vern Gemlbett', 'Maxwell', 701, '19vern.g', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Iseabal Snoddon', 'Newton', 114, '19iseabal.s', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Moll Simioni', 'Newton', 417, '19moll.s', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Donnamarie Fennessy', 'Maxwell', 961, '19donnamarie.f', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Saw Bailes', 'Maxwell', 206, '19saw.b', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Boycie Giocannoni', 'Maxwell', 356, '19boycie.g', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Stanton Rangall', 'Maxwell', 500, '19stanton.r', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Laurella Edlin', 'Maxwell', 201, '19laurella.e', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Thorny Chinnery', 'Pasteur', 315, '19thorny.c', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Thayne Arnley', 'Newton', 325, '19thayne.a', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Kirk Lepper', 'Newton', 768, '19kirk.l', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Grover Mazey', 'Maxwell', 846, '19grover.m', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Emelia Anyene', 'Newton', 279, '19emelia.a', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Tansy Reyne', 'Newton', 195, '19tansy.r', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Kandace Carlaw', 'Pasteur', 83, '19kandace.c', 'Swan');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Maurise Sawkin', 'Pasteur', 697, '19maurise.s', 'Halley');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Arden Pedrollo', 'Newton', 913, '19arden.p', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Nomi Evins', 'Pasteur', 688, '19nomi.e', 'Curie');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Cly Raggitt', 'Maxwell', 408, '19cly.r', 'Pascal');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Verna Sabati', 'Newton', 931, '19verna.s', 'Watt');
-insert into students (name, form, stamps, emailPre, mainClass) values ('Lemuel Bentzen', 'Maxwell', 681, '19lemuel.b', 'Curie');''')
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Elyssa Lamborne', 'Maxwell', 281, '19lamborne.e', 'Swan', 'lE2!g#XiJm<');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Nadeen Housden', 'Newton', 125, '19housden.n', 'Halley', 'yI3,T0B0O2C');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Melina Creyke', 'Maxwell', 945, '19creyke.m', 'Swan', 'vC3>T$a+2(Fr');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Loretta Hakeworth', 'Maxwell', 136, '19hakeworth.l', 'Halley', 'vV8&w!+@');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Jake Beetham', 'Maxwell', 317, '19beetham.j', 'Swan', 'mV2X6w|vBg');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Robinet Solomonides', 'Maxwell', 341, '19solomonides.r', 'Swan', 'bO2(_NtTXuZ!');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Claudette Prewer', 'Pasteur', 64, '19prewer.c', 'Pascal', 'oX8`)AlWb');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Gualterio Andell', 'Newton', 177, '19andell.g', 'Halley', 'dY7&iT&+BfS');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Elli Grigorkin', 'Maxwell', 445, '19grigorkin.e', 'Watt', 'rY5,@GQ=p}Ynrm');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Filmer Pedrocchi', 'Newton', 841, '19pedrocchi.f', 'Curie', 'aR8>1z~P&q');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Celestina Dagger', 'Pasteur', 205, '19dagger.c', 'Swan', 'uX1VX#}CR|');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Cassandre Reignolds', 'Newton', 663, '19reignolds.c', 'Watt', 'rH1<|$o<Em+VEQ6,');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Gae Dionisetti', 'Newton', 382, '19dionisetti.g', 'Pascal', 'sW0.k7E%q<');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Norris Remnant', 'Maxwell', 959, '19remnant.n', 'Watt', 'kY9B+)xBuG|(R,');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Ardelle Dymock', 'Pasteur', 866, '19dymock.a', 'Halley', 'lM2(xjc&#JS');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Yoshi Cassels', 'Pasteur', 277, '19cassels.y', 'Swan', 'vY8{G1h.');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Reynolds Dursley', 'Newton', 128, '19dursley.r', 'Pascal', 'gK0,|(.3~s5wY');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Berkley Dally', 'Newton', 595, '19dally.b', 'Halley', 'pE6&#J#RX');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Biddie Steptowe', 'Pasteur', 435, '19steptowe.b', 'Curie', 'dA4<W>t58!$r');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Sammie Delahunty', 'Maxwell', 105, '19delahunty.s', 'Pascal', 'nF0|$O,t');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Adam Long', 'Newton', 578, '19long.a', 'Swan', 'kL8<!E0v');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Muffin Van Der Weedenburg', 'Maxwell', 176, '19van.m', 'Watt', 'hP9pKl<X');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Grata Clayhill', 'Newton', 479, '19clayhill.g', 'Pascal', 'kA6~CRzDPkIQM');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Alaine Bartlett', 'Maxwell', 392, '19bartlett.a', 'Swan', 'tL0~p6K!WC');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Rasla Cotte', 'Newton', 709, '19cotte.r', 'Halley', 'nV4BIwq');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Bernardine Moughtin', 'Pasteur', 509, '19moughtin.b', 'Watt', 'iB3{s<eD');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Brigida Faltin', 'Newton', 938, '19faltin.b', 'Pascal', 'cM3bF)O}t?8');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Wells Lie', 'Maxwell', 966, '19lie.w', 'Pascal', 'zI5>bN%4');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Starlene Imlach', 'Newton', 355, '19imlach.s', 'Watt', 'vK3#t4cCnM3F');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Rafaello Prott', 'Pasteur', 810, '19prott.r', 'Curie', 'zW1~{BU');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Janot Stanistrete', 'Maxwell', 143, '19stanistrete.j', 'Pascal', 'lZ6#8zRj');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Elenore Coolahan', 'Newton', 394, '19coolahan.e', 'Pascal', 'lX3)F1?1Rz');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Karlie Zanuciolii', 'Maxwell', 901, '19zanuciolii.k', 'Swan', 'bL9.?nO');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Berta Jirieck', 'Newton', 540, '19jirieck.b', 'Swan', 'aI7!i+tCLvY<Z0');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Hyman Doumenc', 'Pasteur', 489, '19doumenc.h', 'Halley', 'kP1=x5dTdj&A?');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Poul Renahan', 'Newton', 319, '19renahan.p', 'Watt', 'uC0{eq&aZ|L0R1@=');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Isahella Drysdell', 'Pasteur', 428, '19drysdell.i', 'Watt', 'rA4`WHNaFAE');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Marlyn Borkett', 'Pasteur', 503, '19borkett.m', 'Pascal', 'oB4|lbHv5bB@?');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Kelcy Gollop', 'Newton', 915, '19gollop.k', 'Pascal', 'hH6J9P2C$f|!=');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Dalila Bamford', 'Maxwell', 8, '19bamford.d', 'Swan', 'zB2@uSnQi');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Guthrie Lanchester', 'Pasteur', 412, '19lanchester.g', 'Watt', 'yT6!GE3sF{ppq0');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Lennie Minshull', 'Maxwell', 57, '19minshull.l', 'Curie', 'lE8+P4BxJ3rcw?');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Melania Gookey', 'Newton', 467, '19gookey.m', 'Swan', 'bA8}iFfWXur4BA$');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Kerby Lawless', 'Maxwell', 335, '19lawless.k', 'Halley', 'sC5<n56cF~94O@');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Ruperta Lau', 'Maxwell', 656, '19lau.r', 'Pascal', 'aT3~IL');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Doralynne Hoggan', 'Maxwell', 69, '19hoggan.d', 'Watt', 'wB2{!W7xD');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Faber Docket', 'Pasteur', 224, '19docket.f', 'Swan', 'qG9F(&_A4');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Kissie Casford', 'Maxwell', 941, '19casford.k', 'Pascal', 'hL8|z.sh7U!7');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Griswold Le Clercq', 'Maxwell', 154, '19le.g', 'Curie', 'sF9(7OAG');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Cacilie Salzen', 'Maxwell', 194, '19salzen.c', 'Pascal', 'oN8+t&4ziAJuU');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Nicolina Slocum', 'Newton', 741, '19slocum.n', 'Curie', 'dH8<?LdcO%z)');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Kiley Kaesmakers', 'Maxwell', 700, '19kaesmakers.k', 'Pascal', 'uM2|.|xHTvpMnT.');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Henryetta Westwood', 'Maxwell', 973, '19westwood.h', 'Watt', 'pC6@,P1QA0?<x');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Jenine Barlee', 'Newton', 65, '19barlee.j', 'Halley', 'mZ5!M}AV6~=');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Gage Birchner', 'Newton', 63, '19birchner.g', 'Swan', 'tR0|hPPhrwyR');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Georgette Trewartha', 'Pasteur', 672, '19trewartha.g', 'Curie', 'hQ2#YZAR');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Cam Crosetti', 'Pasteur', 846, '19crosetti.c', 'Pascal', 'rL2.r@6YV)9pF!6');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Ketty Frenzel;', 'Maxwell', 196, '19frenzel;.k', 'Watt', 'lH9KEpe#y`DoWK6');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Hillary Lomen', 'Pasteur', 727, '19lomen.h', 'Watt', 'sZ1>NhY0AktTbD');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Asher MacFarland', 'Pasteur', 528, '19macfarland.a', 'Pascal', 'kU2!6{zzZ7');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Jeff Hopfer', 'Maxwell', 756, '19hopfer.j', 'Watt', 'cM6#2MuSM=Ho7');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Hank Probyn', 'Pasteur', 897, '19probyn.h', 'Pascal', 'mY7=x5dpkvxx|');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Foss Ortas', 'Newton', 742, '19ortas.f', 'Swan', 'bZ49UiQ~y');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Alfi Budgen', 'Maxwell', 542, '19budgen.a', 'Halley', 'kC5)~hQ)c?z7EXy');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Lory Kitteman', 'Pasteur', 910, '19kitteman.l', 'Swan', 'hK7}zD}pNqGMb');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Dido Fourman', 'Newton', 485, '19fourman.d', 'Watt', 'rC1!kn)y');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Elora Hebbard', 'Maxwell', 396, '19hebbard.e', 'Pascal', 'sH5+.lHV4');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Bunnie Eallis', 'Maxwell', 616, '19eallis.b', 'Watt', 'mR8@`DQoYg');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Hermione Charrier', 'Newton', 590, '19charrier.h', 'Swan', 'aS3`#.&>r&&c');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Tannie Tebbe', 'Newton', 625, '19tebbe.t', 'Watt', 'iT1_$=lZe?');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Gun Nibloe', 'Pasteur', 441, '19nibloe.g', 'Pascal', 'wS5!#B}8');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Eward Karlsson', 'Pasteur', 135, '19karlsson.e', 'Halley', 'aM6%<(l');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Zsazsa Nystrom', 'Newton', 692, '19nystrom.z', 'Swan', 'bX1%YbnI+m');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Clyve Bonny', 'Newton', 183, '19bonny.c', 'Watt', 'wE2,9{YC');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Sapphire Langstrath', 'Newton', 528, '19langstrath.s', 'Watt', 'kR3|85}aby?Uy');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Mariette Torrance', 'Maxwell', 977, '19torrance.m', 'Watt', 'kM6!Wb?p=)');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Chastity Balasin', 'Maxwell', 613, '19balasin.c', 'Halley', 'dJ3|ZT%h7LgP');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Clive Klus', 'Maxwell', 489, '19klus.c', 'Curie', 'fQ52g`U');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Addy Ruoff', 'Maxwell', 695, '19ruoff.a', 'Swan', 'qK4.no.4+?4}');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Jessamyn Nealey', 'Pasteur', 894, '19nealey.j', 'Curie', 'iX95_{vPD,');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Bidget Kaemena', 'Maxwell', 434, '19kaemena.b', 'Pascal', 'rD6=KPvIt7');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Meridith Toderi', 'Maxwell', 745, '19toderi.m', 'Watt', 'lU2$)vez~OI#');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Halette Stowe', 'Newton', 511, '19stowe.h', 'Halley', 'qZ6(5G6=aQVM2');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Packston O''Halleghane', 'Pasteur', 214, '19o''halleghane.p', 'Halley', 'bM6)&xa_3FJ@uu');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Emmalynn Dugdale', 'Pasteur', 64, '19dugdale.e', 'Halley', 'hQ9<iYX2BtS>(z');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Joell Aglione', 'Newton', 12, '19aglione.j', 'Watt', 'pN0+YqMQ');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Noel Swyer-Sexey', 'Pasteur', 146, '19swyer-sexey.n', 'Watt', 'hX2>.M5{%');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Charline Allenby', 'Maxwell', 913, '19allenby.c', 'Halley', 'xU0=XW1cNC_4');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Merilee Morgue', 'Pasteur', 449, '19morgue.m', 'Swan', 'oW2xG1V=2WG3G');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Carolann Huyge', 'Maxwell', 65, '19huyge.c', 'Halley', 'qQ9!H{.Y');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Bobette Tunno', 'Maxwell', 87, '19tunno.b', 'Watt', 'hS9).&9K|y');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Ellene Ruthven', 'Maxwell', 14, '19ruthven.e', 'Curie', 'hS8)(U2yws9K');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Abagael Cheesman', 'Pasteur', 359, '19cheesman.a', 'Watt', 'dV2?~#O');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Tudor Westley', 'Newton', 224, '19westley.t', 'Pascal', 'fJ4_<,gyR4oiC');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Dannie Gentric', 'Maxwell', 196, '19gentric.d', 'Watt', 'nX0<zQ,,`_Fv@}h');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Hart Treversh', 'Maxwell', 327, '19treversh.h', 'Pascal', 'uM9|Jhcm}&n3Y');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Brittni Hans', 'Newton', 36, '19hans.b', 'Curie', 'zB1|jKpgJLAdk?Zj');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Kamillah Capini', 'Maxwell', 517, '19capini.k', 'Curie', 'bU6#.cbP');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Merci Renvoys', 'Pasteur', 52, '19renvoys.m', 'Watt', 'zB8@@TFW$');
+insert into students (name, form, stamps, emailpre, mainclass, password) values ('Norris Burbage', 'Maxwell', 224, '19burbage.n', 'Swan', 'oD8=alEAxM4');
+                create table staff (
+	name VARCHAR(50),
+	form VARCHAR(7),
+	emailpre VARCHAR(50),
+	password VARCHAR(50)
+);
+insert into staff (name, form, emailpre, password) values ('Nelia Arnold', 'Maxwell', '19arnold.n', 'qD3{IzGA>,');
+insert into staff (name, form, emailpre, password) values ('Gasper Trood', 'Maxwell', '19trood.g', 'pS3@?)djSH2?');
+insert into staff (name, form, emailpre, password) values ('Haily Elsmere', 'Newton', '19elsmere.h', 'aX8(tA{3~8&M');
+insert into staff (name, form, emailpre, password) values ('Felike Chester', 'Newton', '19chester.f', 'qY3)3zpeDYm~0=O');
+insert into staff (name, form, emailpre, password) values ('Elihu Edgars', 'Newton', '19edgars.e', 'wJ2<<t+D$');
+insert into staff (name, form, emailpre, password) values ('Tome Gun', 'Newton', '19gun.t', 'gN4,joGD{$CQn}r');
+insert into staff (name, form, emailpre, password) values ('Ricoriki Matchett', 'Maxwell', '19matchett.r', 'jM3`w)_wAbne`');
+insert into staff (name, form, emailpre, password) values ('Rycca Gyngyll', 'Maxwell', '19gyngyll.r', 'iO8!!q+9jx3CH|E0');
+insert into staff (name, form, emailpre, password) values ('Gilles Luciani', 'Maxwell', '19luciani.g', 'bQ8JDXrZ');
+insert into staff (name, form, emailpre, password) values ('Deerdre Swadling', 'Maxwell', '19swadling.d', 'qN2~yN3ePb(4');
+insert into staff (name, form, emailpre, password) values ('Dorene Breddy', 'Newton', '19breddy.d', 'pB1(Hxmv');
+insert into staff (name, form, emailpre, password) values ('Gerladina Hayesman', 'Pasteur', '19hayesman.g', 'rR4!gKdN#3');
+insert into staff (name, form, emailpre, password) values ('Brade Gibbe', 'Maxwell', '19gibbe.b', 'mV0.v0Ps');
+insert into staff (name, form, emailpre, password) values ('Sheila-kathryn Flieger', 'Pasteur', '19flieger.s', 'pF3~yF,A96uDt');
+insert into staff (name, form, emailpre, password) values ('Anastasia Semiraz', 'Pasteur', '19semiraz.a', 'nW1|y0cM<M!S');
+insert into staff (name, form, emailpre, password) values ('Giorgi Crofts', 'Maxwell', '19crofts.g', 'zI2|>xO,!k#qU<_9');
+insert into staff (name, form, emailpre, password) values ('Roshelle Goodall', 'Newton', '19goodall.r', 'jH8<0.(=');
+insert into staff (name, form, emailpre, password) values ('Virgie Fallon', 'Newton', '19fallon.v', 'aH9>CB_+kS(?,vaO');
+insert into staff (name, form, emailpre, password) values ('Bartolemo Furniss', 'Maxwell', '19furniss.b', 'kA2?Pl%(e');
+insert into staff (name, form, emailpre, password) values ('Benoit Vell', 'Pasteur', '19vell.b', 'aT6%@9uTQ');
+insert into staff (name, form, emailpre, password) values ('Jessalyn Hurworth', 'Newton', '19hurworth.j', 'wO2@1{D$_boQDB');
+insert into staff (name, form, emailpre, password) values ('Reamonn Charlson', 'Maxwell', '19charlson.r', 'bJ3$`J=5G1TG=OP9');
+insert into staff (name, form, emailpre, password) values ('Joseito Bynert', 'Newton', '19bynert.j', 'tN8>5DI4@0J');
+insert into staff (name, form, emailpre, password) values ('Frans Biasetti', 'Pasteur', '19biasetti.f', 'uF6>Hja&cplBEv)');
+insert into staff (name, form, emailpre, password) values ('Charin Whordley', 'Maxwell', '19whordley.c', 'mB9!CJUwsY');
+insert into staff (name, form, emailpre, password) values ('Donetta Lummus', 'Pasteur', '19lummus.d', 'jS5%1|d%5');
+insert into staff (name, form, emailpre, password) values ('Merci Althrope', 'Maxwell', '19althrope.m', 'gO7{BqA$W36rO+v');
+insert into staff (name, form, emailpre, password) values ('Johnny Whenham', 'Pasteur', '19whenham.j', 'vT5(P8c_ml');
+insert into staff (name, form, emailpre, password) values ('Sindee Abramovicz', 'Maxwell', '19abramovicz.s', 'rW0cI&b');
+insert into staff (name, form, emailpre, password) values ('Debbie Salterne', 'Newton', '19salterne.d', 'vT5f{vAae)RUy');""")
 
 
 

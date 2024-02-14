@@ -1,6 +1,6 @@
 # app.py
 from flask import Flask, render_template, request, session, redirect, url_for
-from databaseComms import *
+import databaseComms as dc
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -15,10 +15,13 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user = databaseComms.authenticate_user(username, password)
+        user = dc.authenticate_user(username, password)
         if user and user['is_staff']:
             session['user_id'] = user['id']
             return redirect(url_for('staff_dashboard'))
+        elif user:
+            session['user_id'] = user['id']
+            return redirect(url_for('student_dashboard'))
         else:
             error = 'Invalid login'
             return render_template('login.html', error=error)
@@ -30,7 +33,7 @@ def staff_dashboard():
     if not is_logged_in():
         return redirect(url_for('login'))
     # Fetch staff information using session['user_id']
-    staff_info = databaseComms.get_staff_info(session['user_id'])
+    staff_info = dc.get_staff_info(session['user_id'])
     return render_template('staff_dashboard.html', staff_info=staff_info)
 
 # Route for modifying stamps
@@ -40,8 +43,8 @@ def modify_stamps():
         return redirect(url_for('login'))
     emailPre = request.form['emailPre']
     stamps = request.form['stamps']
-    # Call function from databaseComms.py to modify stamps
-    databaseComms.modify_user_stamps(emailPre, stamps)
+    # Call function from dc.py to modify stamps
+    dc.modify_user_stamps(emailPre, stamps)
     return redirect(url_for('staff_dashboard'))
 
 # Route for student dashboard
@@ -50,7 +53,7 @@ def student_dashboard():
     if not is_logged_in():
         return redirect(url_for('login'))
     # Fetch student information using session['user_id']
-    student_info = databaseComms.get_student_info(session['user_id'])
+    student_info = dc.get_student_info(session['user_id'])
     return render_template('student_dashboard.html', student_info=student_info)
 
 # Logout route
