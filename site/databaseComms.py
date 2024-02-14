@@ -35,7 +35,7 @@ def view_student(emailpre):
 
 
 def authenticate_staff(email, password):
-    conn = sqlite3.connect('your_database.db')
+    conn = sqlite3.connect(dbSelect())
     c = conn.cursor()
     c.execute("SELECT name, form, emailpre FROM staff WHERE emailpre=? AND password=?", (email, password))
     staff_info = c.fetchone()
@@ -43,7 +43,7 @@ def authenticate_staff(email, password):
     return staff_info
 
 def authenticate_student(email, password):
-    conn = sqlite3.connect('your_database.db')
+    conn = sqlite3.connect(dbSelect())
     c = conn.cursor()
     c.execute("SELECT name, form, stamps, emailpre, mainclass FROM students WHERE emailpre=? AND password=?", (email, password))
     student_info = c.fetchone()

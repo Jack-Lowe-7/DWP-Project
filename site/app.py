@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from databaseComms import authenticate_staff, authenticate_student
+from databaseComms import authenticate_staff, authenticate_student, get_staff_info, get_student_info
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 
 # Route for logging in
 @app.route('/login', methods=['GET', 'POST'])
@@ -37,14 +42,26 @@ def login():
 def staff_dashboard():
     if 'email' not in session or 'is_staff' not in session or not session['is_staff']:
         return redirect(url_for('login'))
-    return render_template('staff_dashboard.html')
+    
+    # Fetch staff information using session['email']
+    email = session['email']
+    staff_info = get_staff_info(email)
+    
+    return render_template('staff_dashboard.html', staff_info=staff_info)
+
 
 # Route for student dashboard
 @app.route('/student/dashboard')
 def student_dashboard():
     if 'email' not in session or 'is_staff' not in session or session['is_staff']:
         return redirect(url_for('login'))
-    return render_template('student_dashboard.html')
+    
+    # Fetch student information using session['email']
+    email = session['email']
+    student_info = get_student_info(email)
+    
+    return render_template('student_dashboard.html', student_info=student_info)
+
 
 # Route for logging out
 @app.route('/logout')
@@ -52,6 +69,11 @@ def logout():
     session.pop('email', None)
     session.pop('is_staff', None)
     return redirect(url_for('login'))
+
+@app.route('/license')
+def license():
+    return render_template('license.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
