@@ -71,10 +71,18 @@ h1 {
     font-family: 'NeueRegrade-Bold', Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    font-size: 3em;
 }
 
 .content {
     flex: 1 0 auto;
+    background-color: #270363;
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    justify-content: center;
+    text-align: center;
+    color: #ffd100;
+    padding-top: 20px;
+
   }
 
 .site-footer
@@ -241,4 +249,43 @@ h1 {
     margin-right:0;
     font-weight:600
   }
+}
+
+
+.hero-image {
+    background-image: url('assets/hero.jpg');
+    background-color: #270363;
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffd100;
+}
+
+.hero-content {
+    max-width: 90vh;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 8em; /* Adjust the font size as needed */
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em; /* Adjust the font size as needed */
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    color: #270363;
+    background-color: #ffd100;
+}
+
+.btn-primary:hover {
+    color: #ffd100;
+    background-color: #270363;
 }

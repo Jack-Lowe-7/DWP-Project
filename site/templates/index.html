@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEF StampWorks</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" type="image/ico" href="{{ url_for('static', filename='assets/logo.ico') }}">
 </head>
 <body>
@@ -29,8 +29,13 @@
     </div>
 </nav>
   <div class="container content">
-    <h1>Welcome to NEF StampWorks!</h1>
-    <p>NEF StampWorks is your all-in-one platform for managing student reward points at North East Futures (NEF) UTC. With StampWorks, staff members can easily allocate and track student stamps, while students can monitor their progress and redeem rewards.</p>
+    <div class="hero-image">
+        <div class="hero-content">
+            <h1>Welcome to NEF StampWorks</h1>
+            <p>NEF StampWorks is your all-in-one platform for managing student reward points at North East Futures (NEF) UTC.</p>
+            <a class="btn btn-primary" href="/login">Get Started</a>
+        </div>
+    </div>
     <h2>Key Features:</h2>
     <ul>
       <li>Efficient stamp allocation and tracking system</li>
