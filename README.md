@@ -13,7 +13,7 @@
   </p>
 </p>
 
-![Downloads](https://img.shields.io/github/downloads/jack-lowe-7/DWP-Project/total) ![Contributors](https://img.shields.io/github/contributors/jack-lowe-7/DWP-Project?color=dark-green) ![License](https://img.shields.io/github/license/jack-lowe-7/DWP-Project) 
+![Contributors](https://img.shields.io/github/contributors/jack-lowe-7/DWP-Project?color=dark-green) ![License](https://img.shields.io/github/license/jack-lowe-7/DWP-Project) 
 
 ## Table Of Contents
 
@@ -31,12 +31,12 @@ We used python for this project, and the built in SQLite3 module to handle the d
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
+The web app will be the best final option, however to test the cuurent state you can run a local program/console
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This will run in the terminal (See below), however it's advised to use the GUI made with the PySimpleGUI module to see the full functionality.
+This will run in the terminal (3. b.), however it's advised to use the GUI made with the PySimpleGUI module to see the full functionality in terms of a local app. The web app will be however, the best final option.
 
 ```sh
 pip install pysimplegui
