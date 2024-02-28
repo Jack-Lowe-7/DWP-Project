@@ -255,7 +255,7 @@ h1 {
     background-image: url('../assets/pattern-overlay.png');
     background-color: #270363;
     background-size: cover;
-    background-position: center;
+    background-position: left top;
     height: 100vh; /* Set the height to 100% of the viewport height */
     display: flex;
     justify-content: center;
@@ -295,6 +295,23 @@ h1 {
 
 
 .navbar {
-  background-color: #ffd100;
-  color: #270363;
+  background-color: #ffd100 !important;
 }
+
+.nav-item a {
+  color: #270363 !important;
+}
+
+.nav-item a:hover {
+  color: #000000 !important;
+}
+
+.navbar-brand {
+  color: #270363 !important;
+}
+
+
+/* .main-y { 
+  background
+}
+*/
