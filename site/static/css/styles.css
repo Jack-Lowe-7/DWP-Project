@@ -86,11 +86,11 @@ h1 {
 
 .site-footer
 {
-  background-color:#26272b;
+  background-color:#270363;
   padding:45px 0 20px;
   font-size:15px;
   line-height:24px;
-  color:#737373;
+  color:#ffffff;
   margin-top: 50px;
   flex-shrink: 0;
 }
@@ -113,11 +113,11 @@ h1 {
 }
 .site-footer a
 {
-  color:#737373;
+  color:#ffffff;
 }
 .site-footer a:hover
 {
-  color:#3366cc;
+  color:#ffd100;
   text-decoration:none;
 }
 .footer-links
@@ -131,11 +131,11 @@ h1 {
 }
 .footer-links a
 {
-  color:#737373
+  color:#ffffff
 }
 .footer-links a:active,.footer-links a:focus,.footer-links a:hover
 {
-  color:#3366cc;
+  color: #ffd100;
   text-decoration:none;
 }
 .footer-links.inline li
@@ -154,7 +154,7 @@ h1 {
   margin-left:6px;
   margin-right:0;
   border-radius:100%;
-  background-color:#33353d
+  background-color:#ffd100
 }
 .copyright-text
 {
@@ -199,7 +199,7 @@ h1 {
 }
 .social-icons a{
   background-color:#eceeef;
-  color:#818a91;
+  color:#270363;
   font-size:16px;
   display:inline-block;
   line-height:44px;
@@ -252,7 +252,7 @@ h1 {
 
 
 .hero-image {
-    background-image: url('assets/hero.jpg');
+    background-image: url('../assets/pattern-overlay.png');
     background-color: #270363;
     background-size: cover;
     background-position: center;
@@ -282,9 +282,19 @@ h1 {
 .btn-primary {
     color: #270363;
     background-color: #ffd100;
+    border-color: #ffd100;
 }
 
 .btn-primary:hover {
     color: #ffd100;
     background-color: #270363;
+    border-color: #ffd100;
+}
+
+
+
+
+.navbar {
+  background-color: #ffd100;
+  color: #270363;
 }
