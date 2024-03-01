@@ -18,7 +18,7 @@ def add_student(name, form, stamps, emailpre, mainClass):
 def award_stamps(name, stamps):
     conn = sqlite3.connect(dbSelect())
     c = conn.cursor()
-    c.execute("UPDATE students SET stamps = stamps + ? WHERE name = ?", (stamps, name))
+    c.execute("UPDATE students SET stamps = stamps + ? WHERE name = ? OR mainclass = ?", (stamps, name, name))
     conn.commit()
     conn.close()
 
@@ -27,8 +27,9 @@ def view_student(emailpre):
     conn = sqlite3.connect(dbSelect())
     c = conn.cursor()
     c.execute("SELECT * FROM students WHERE emailpre=?", (emailpre,))
+    result = c.fetchone()
     conn.close()
-    return c.fetchone()
+    return result
 
 
 

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from databaseComms import authenticate_staff, authenticate_student, get_staff_info, get_student_info
+from databaseComms import authenticate_staff, authenticate_student, get_staff_info, get_student_info, award_stamps
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
@@ -61,6 +61,13 @@ def student_dashboard():
     student_info = get_student_info(email)
     
     return render_template('student_dashboard.html', student_info=student_info)
+
+@app.route('/staff/dashboard/modify', methods=['POST'])
+def modify():
+    students = request.form['user_id']
+    stamps = request.form['stamps']
+    award_stamps(students, stamps)
+    return redirect(url_for('staff_dashboard'))
 
 
 # Route for logging out

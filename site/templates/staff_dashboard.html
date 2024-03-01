@@ -29,10 +29,10 @@
     <div class="content">
     <h2>Welcome {{ staff_info[0] }}</h2>
     <p>Tutor of: {{ staff_info[1] }}</p>
-    <form action="/modify_stamps" method="post">
-        <label for="user_id">Student prefix:</label><br>
+    <form action="/staff/dashboard/modify" method="post">
+        <label for="user_id">Class name/Student prefix:</label><br>
         <input type="text" id="user_id" name="user_id" required><br>
-        <label for="stamps">Set stamp total:</label><br>
+        <label for="stamps">Amount of stamps to add:</label><br>
         <input type="text" id="stamps" name="stamps" required><br>
         <input type="submit" value="Modify Stamps">
     </form>
