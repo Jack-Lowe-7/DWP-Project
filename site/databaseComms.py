@@ -7,10 +7,10 @@ def dbSelect():
 
 
 # Function to add a student
-def add_student(name, form, stamps, emailpre, mainClass):
+def add_student(name, form, stamps, emailpre, mainClass, password):
     conn = sqlite3.connect(dbSelect())
     c = conn.cursor()
-    c.execute("INSERT INTO students (name, form, stamps, emailpre, mainClass) VALUES (?, ?, ?, ?, ?)", (name, form, stamps, emailpre, mainClass))
+    c.execute("INSERT INTO students (name, form, stamps, emailpre, mainClass, password) VALUES (?, ?, ?, ?, ?, ?)", (name, form, stamps, emailpre, mainClass, password))
     conn.commit()
     conn.close()
 

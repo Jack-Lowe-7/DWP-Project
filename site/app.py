@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_file
 from databaseComms import authenticate_staff, authenticate_student, get_staff_info, get_student_info, award_stamps
 
 app = Flask(__name__)
@@ -80,6 +80,45 @@ def logout():
 @app.route('/license')
 def license():
     return render_template('license.html')
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+def adminLogin():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        
+        # Check if admin user
+        staff_info = False
+        if email == "admin" and password == "admin":
+            staff_info = True
+        if staff_info == True:
+            session['email'] = email
+            session['is_admin'] = True
+            return redirect(url_for('admin_dashboard'))
+        
+        # If authentication fails, show error message
+        error = "Invalid credentials. Please try again if you are an admin."
+        return render_template('admin-login.html', error=error)
+    
+    # If GET request, render login form
+    return render_template('admin-login.html')
+
+
+@app.route('/admin/dashboard')
+def admin_dashboard():
+    if 'email' not in session or 'is_admin' not in session or not session['is_admin']:
+        return redirect(url_for('/'))
+    
+    return render_template('admin.html')
+
+
+@app.route('/admin/dashboard/download_template')
+def database_template():
+    path = "/site/static/downloads/databse-template-blank.db"
+    return send_file(path, as_attachment=True)
+
+
 
 
 
