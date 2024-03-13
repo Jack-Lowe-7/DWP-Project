@@ -121,37 +121,24 @@ insert into students (name, form, stamps, emailpre, mainclass, password) values 
 	emailpre VARCHAR(50),
 	password VARCHAR(50)
 );
-insert into staff (name, form, emailpre, password) values ('Nelia Arnold', 'Maxwell', '19arnold.n', 'qD3{IzGA>,');
-insert into staff (name, form, emailpre, password) values ('Gasper Trood', 'Maxwell', '19trood.g', 'pS3@?)djSH2?');
-insert into staff (name, form, emailpre, password) values ('Haily Elsmere', 'Newton', '19elsmere.h', 'aX8(tA{3~8&M');
-insert into staff (name, form, emailpre, password) values ('Felike Chester', 'Newton', '19chester.f', 'qY3)3zpeDYm~0=O');
-insert into staff (name, form, emailpre, password) values ('Elihu Edgars', 'Newton', '19edgars.e', 'wJ2<<t+D$');
-insert into staff (name, form, emailpre, password) values ('Tome Gun', 'Newton', '19gun.t', 'gN4,joGD{$CQn}r');
-insert into staff (name, form, emailpre, password) values ('Ricoriki Matchett', 'Maxwell', '19matchett.r', 'jM3`w)_wAbne`');
-insert into staff (name, form, emailpre, password) values ('Rycca Gyngyll', 'Maxwell', '19gyngyll.r', 'iO8!!q+9jx3CH|E0');
-insert into staff (name, form, emailpre, password) values ('Gilles Luciani', 'Maxwell', '19luciani.g', 'bQ8JDXrZ');
-insert into staff (name, form, emailpre, password) values ('Deerdre Swadling', 'Maxwell', '19swadling.d', 'qN2~yN3ePb(4');
-insert into staff (name, form, emailpre, password) values ('Dorene Breddy', 'Newton', '19breddy.d', 'pB1(Hxmv');
-insert into staff (name, form, emailpre, password) values ('Gerladina Hayesman', 'Pasteur', '19hayesman.g', 'rR4!gKdN#3');
-insert into staff (name, form, emailpre, password) values ('Brade Gibbe', 'Maxwell', '19gibbe.b', 'mV0.v0Ps');
-insert into staff (name, form, emailpre, password) values ('Sheila-kathryn Flieger', 'Pasteur', '19flieger.s', 'pF3~yF,A96uDt');
-insert into staff (name, form, emailpre, password) values ('Anastasia Semiraz', 'Pasteur', '19semiraz.a', 'nW1|y0cM<M!S');
-insert into staff (name, form, emailpre, password) values ('Giorgi Crofts', 'Maxwell', '19crofts.g', 'zI2|>xO,!k#qU<_9');
-insert into staff (name, form, emailpre, password) values ('Roshelle Goodall', 'Newton', '19goodall.r', 'jH8<0.(=');
-insert into staff (name, form, emailpre, password) values ('Virgie Fallon', 'Newton', '19fallon.v', 'aH9>CB_+kS(?,vaO');
-insert into staff (name, form, emailpre, password) values ('Bartolemo Furniss', 'Maxwell', '19furniss.b', 'kA2?Pl%(e');
-insert into staff (name, form, emailpre, password) values ('Benoit Vell', 'Pasteur', '19vell.b', 'aT6%@9uTQ');
-insert into staff (name, form, emailpre, password) values ('Jessalyn Hurworth', 'Newton', '19hurworth.j', 'wO2@1{D$_boQDB');
-insert into staff (name, form, emailpre, password) values ('Reamonn Charlson', 'Maxwell', '19charlson.r', 'bJ3$`J=5G1TG=OP9');
-insert into staff (name, form, emailpre, password) values ('Joseito Bynert', 'Newton', '19bynert.j', 'tN8>5DI4@0J');
-insert into staff (name, form, emailpre, password) values ('Frans Biasetti', 'Pasteur', '19biasetti.f', 'uF6>Hja&cplBEv)');
-insert into staff (name, form, emailpre, password) values ('Charin Whordley', 'Maxwell', '19whordley.c', 'mB9!CJUwsY');
-insert into staff (name, form, emailpre, password) values ('Donetta Lummus', 'Pasteur', '19lummus.d', 'jS5%1|d%5');
-insert into staff (name, form, emailpre, password) values ('Merci Althrope', 'Maxwell', '19althrope.m', 'gO7{BqA$W36rO+v');
-insert into staff (name, form, emailpre, password) values ('Johnny Whenham', 'Pasteur', '19whenham.j', 'vT5(P8c_ml');
-insert into staff (name, form, emailpre, password) values ('Sindee Abramovicz', 'Maxwell', '19abramovicz.s', 'rW0cI&b');
-insert into staff (name, form, emailpre, password) values ('Debbie Salterne', 'Newton', '19salterne.d', 'vT5f{vAae)RUy');""")
-
+insert into staff (name, form, emailpre, password) values ('Nelia Arnold', 'Maxwell', 'nelia.arnold', 'qD3{IzGA>,');
+insert into staff (name, form, emailpre, password) values ('Gasper Trood', 'Maxwell', 'gasper.trood', 'pS3@?)djSH2?');
+insert into staff (name, form, emailpre, password) values ('Haily Elsmere', 'Newton', 'haily.elsmere', 'aX8(tA{3~8&M');
+insert into staff (name, form, emailpre, password) values ('Felike Chester', 'Newton', 'felike.chester', 'qY3)3zpeDYm~0=O');
+insert into staff (name, form, emailpre, password) values ('Elihu Edgars', 'Newton', 'elihu.edgars', 'wJ2<<t+D$');
+insert into staff (name, form, emailpre, password) values ('Tome Gun', 'Newton', 'tome.gun', 'gN4,joGD{$CQn}r');
+insert into staff (name, form, emailpre, password) values ('Ricoriki Matchett', 'Maxwell', 'ricoriki.matchett', 'jM3`w)_wAbne`');
+insert into staff (name, form, emailpre, password) values ('Rycca Gyngyll', 'Maxwell', 'rycca.gyngyll', 'iO8!!q+9jx3CH|E0');
+insert into staff (name, form, emailpre, password) values ('Gilles Luciani', 'Maxwell', 'gilles.luciani', 'bQ8JDXrZ');
+insert into staff (name, form, emailpre, password) values ('Deerdre Swadling', 'Maxwell', 'deerdre.swadling', 'qN2~yN3ePb(4');
+insert into staff (name, form, emailpre, password) values ('Joseito Bynert', 'Newton', 'joseito.bynert', 'tN8>5DI4@0J');
+insert into staff (name, form, emailpre, password) values ('Frans Biasetti', 'Pasteur', 'frans.biasetti', 'uF6>Hja&cplBEv)');
+insert into staff (name, form, emailpre, password) values ('Charin Whordley', 'Maxwell', 'charin.whordley', 'mB9!CJUwsY');
+insert into staff (name, form, emailpre, password) values ('Donetta Lummus', 'Pasteur', 'donetta.lummus', 'jS5%1|d%5');
+insert into staff (name, form, emailpre, password) values ('Merci Althrope', 'Maxwell', 'merci.althrope', 'gO7{BqA$W36rO+v');
+insert into staff (name, form, emailpre, password) values ('Johnny Whenham', 'Pasteur', 'johnny.whenham', 'vT5(P8c_ml');
+insert into staff (name, form, emailpre, password) values ('Sindee Abramovicz', 'Maxwell', 'sindee.abramovicz', 'rW0cI&b');
+insert into staff (name, form, emailpre, password) values ('Debbie Salterne', 'Newton', 'debbie.salterne', 'vT5f{vAae)RUy');""")
 
 
 
