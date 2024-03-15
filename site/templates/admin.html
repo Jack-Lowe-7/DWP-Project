@@ -1,14 +1,66 @@
-<!-- staff_dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Dashboard | StampWorks</title>
+    <title>Admin Panel | StampWorks</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/ico" href="{{ url_for('static', filename='assets/logo.ico') }}">
+
+  <style>
+  .panel-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffd100;
+    color: #270363;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .panel-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .panel-form {
+    margin-bottom: 20px;
+  }
+  .panel-form label {
+    font-weight: bold;
+  }
+  .panel-form input[type="text"],
+  .panel-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #270363; /* Light gray border */
+      border-radius: 4px;
+  }
+  .panel-form input[type="submit"],
+  .panel-container a {
+      width: 100%;
+      padding: 10px;
+      color: #270363;
+      background-color: #ffd100;
+      border-color: #270363;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+  .panel-form input[type="submit"]:hover,
+  .panel-container a:hover {
+      color: #ffd100;
+      background-color: #270363;
+      border-color: #ffd100;
+  }
+  .error-message {
+    color: #dc3545; /* Red color for error messages */
+    margin-top: 10px;
+  }
+  hr {
+    border-color: #270363;
+  }
+</style>
 </head>
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -27,16 +79,26 @@
         </div>
     </nav>
     <div class="content">
-    <h2>ADMIN PANEL</h2>
-    <form action="/staff/dashboard/modify" method="post">
-        <label for="user_id">Class/Student name:</label><br>
-        <input type="text" id="user_id" name="user_id" required><br>
-        <label for="stamps">Amount of stamps to add:</label><br>
-        <input type="text" id="stamps" name="stamps" required><br>
-        <input type="submit" value="Modify Stamps">
-    </form>
-    <br>
-    <a href="/logout">Logout</a>
+      <div class="container mt-5">
+        <div class="panel-container">
+          <h2 class="panel-title">ADMIN PANEL</h2>
+          <hr>
+          <form class="panel-form" action = "/admin/dashboard/upload" method = "post" enctype="multipart/form-data">
+            <label for="select_file">Upload a new database:</label><br>   
+            <input id="select_file" type="file" name="file">
+            <input class="btn btn-primary" type="submit" value="Upload">   
+          </form>
+          <hr>
+          <form class="panel-form" action="/admin/dashboard/add_student" method="post">
+            <label for="user_id">Student name:</label><br>
+            <input type="text" id="user_id" name="user_id" required><br>
+            <label for="stamps">Current total</label><br>
+            <input type="text" id="stamps" name="stamps" required><br>
+            <input type="submit" value="Add Student">
+          </form>
+          <a class="btn btn-primary" href="/logout">Logout</a>
+        </div>
+      </div>
     </div>
 
     <footer class="site-footer">

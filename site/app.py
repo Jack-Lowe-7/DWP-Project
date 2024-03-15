@@ -118,6 +118,13 @@ def database_template():
     path = "/site/static/downloads/databse-template-blank.db"
     return send_file(path, as_attachment=True)
 
+@app.route('/admin/dashboard/upload', methods = ['GET', 'POST'])   
+def upload():   
+    if request.method == 'POST':   
+        f = request.files['file'] 
+        f.save(f.filename)   
+        return render_template("upload_success.html", name = f.filename)
+    
 
 
 
