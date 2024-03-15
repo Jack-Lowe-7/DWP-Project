@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_file
-from databaseComms import authenticate_staff, authenticate_student, get_staff_info, get_student_info, award_stamps
+from databaseComms import authenticate_staff, authenticate_student, get_staff_info, get_student_info, award_stamps, add_student
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
@@ -118,16 +118,36 @@ def database_template():
     path = "/site/static/downloads/databse-template-blank.db"
     return send_file(path, as_attachment=True)
 
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ['.db']
+
+
+
 @app.route('/admin/dashboard/upload', methods = ['GET', 'POST'])   
 def upload():   
-    if request.method == 'POST':   
-        f = request.files['file'] 
-        f.save(f.filename)   
-        return render_template("upload_success.html", name = f.filename)
+    if request.method == 'POST':
+        f = request.files['file']
+        if allowed_file(f.filename):
+            f.save(f.filename)
+            return render_template("upload_success.html", name = f.filename)
+        else:
+            return render_template("upload_fail.html", msg="File extension not allowed - use a database with file format .db matching the set-up of the template on the admin panel")   
     
-
-
-
+@app.route('/admin/dashboard/add_student', methods = ['GET', 'POST'])
+def add_student_page():
+    if request.method == 'POST':
+        name = request.form['student_name']
+        form = request.form['student_form']
+        mainclass = request.form['student_class']
+        passw = request.form['student_pass']
+        stamps = request.form['stamps']
+        name = name.split(" ")
+        fname = name[1]
+        lname = name[0]
+        emailpre = "19" + lname.lower() + "." + fname[0]
+        add_student(str(name), str(form), int(stamps), str(emailpre), str(mainclass), str(passw))
+        return redirect(url_for('admin_dashboard'))
 
 
 

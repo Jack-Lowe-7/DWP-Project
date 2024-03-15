@@ -90,15 +90,26 @@
           </form>
           <hr>
           <form class="panel-form" action="/admin/dashboard/add_student" method="post">
-            <label for="user_id">Student name:</label><br>
-            <input type="text" id="user_id" name="user_id" required><br>
-            <label for="stamps">Current total</label><br>
+            <label for="student_name">Student name:</label><br>
+            <input type="text" id="student_name" name="student_name" required><br>
+
+            <label for="student_form">Student form:</label><br>
+            <input type="text" id="student_form" name="student_form" required><br>
+
+            <label for="student_class">Student class:</label><br>
+            <input type="text" id="student_class" name="student_class" required><br>
+
+            <label for="student_pass">Student password:</label><br>
+            <input type="text" id="student_pass" name="student_pass" required><br>
+
+            <label for="stamps">Current total:</label><br>
             <input type="text" id="stamps" name="stamps" required><br>
             <input type="submit" value="Add Student">
           </form>
           <a class="btn btn-primary" href="/logout">Logout</a>
         </div>
       </div>
+      <br>
     </div>
 
     <footer class="site-footer">
