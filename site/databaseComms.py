@@ -76,3 +76,42 @@ def get_student_info(emailpre):
     student_info = c.fetchone()
     conn.close()
     return student_info
+
+def leadCheck():
+    conn = sqlite3.connect(dbSelect())
+    c = conn.cursor()
+    c.execute("SELECT SUM(stamps) FROM students WHERE form = 'Pasteur';")
+    pasteur = c.fetchone()[0]
+    c.execute("SELECT SUM(stamps) FROM students WHERE form = 'Newton';")
+    newton = c.fetchone()[0]
+    c.execute("SELECT SUM(stamps) FROM students WHERE form = 'Maxwell';")
+    maxwell = c.fetchone()[0]
+    list = [pasteur, newton, maxwell]
+    list = sorted(list)
+    i = 0
+    while i < len(list):
+        if list[i] == pasteur:
+            list[i] = "Pasteur"
+        elif list[i] == newton:
+            list[i] = "Newton"
+        elif list[i] == maxwell:
+            list[i] = "Maxwell"
+        i = i + 1
+    conn.close()
+    return list
+
+def formTotal(form):
+    conn = sqlite3.connect(dbSelect())
+    c = conn.cursor()
+    c.execute("SELECT SUM(stamps) FROM students WHERE form = ?;", (form,))
+    res = c.fetchone()[0]
+    conn.close()
+    return res
+
+def rankFind(form):
+    conn = sqlite3.connect(dbSelect())
+    c = conn.cursor()
+    c.execute("SELECT name,stamps FROM students WHERE form = ? GROUP BY name,stamps ORDER BY stamps DESC LIMIT 3", (form,))
+    res = c.fetchall()
+    conn.close()
+    return(res)

@@ -3,69 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In | StampWorks</title>
+    <title>Form Stats | StampWorks</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/ico" href="{{ url_for('static', filename='assets/logo.ico') }}">
-
-    <style>
-        /* Custom CSS for login page */
-        body {
-            background-color: #270363;
-            color: #270363;
-        }
-        .login-container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffd100;
-            color: #270363;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .login-title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .login-form {
-            margin-bottom: 20px;
-        }
-        .login-form label {
-            font-weight: bold;
-        }
-        .login-form input[type="text"],
-        .login-form input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #270363; /* Light gray border */
-            border-radius: 4px;
-        }
-        .login-form input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            color: #270363;
-            background-color: #ffd100;
-            border-color: #270363;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .login-form input[type="submit"]:hover {
-            color: #ffd100;
-            background-color: #270363;
-            border-color: #ffd100;
-        }
-        .error-message {
-            color: #dc3545; /* Red color for error messages */
-            margin-top: 10px;
-        }
-
-
-    </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="/">NEF StampWorks</a>
@@ -80,32 +24,19 @@
 <li class="nav-item">
                         <a class="nav-link" href="/leaderboard">Leaderboard</a>
                     </li>
+                    <li>
+                      <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <div class="content">
-    <div class="container mt-5">
-        <div class="login-container">
-            <h2 class="login-title">Login</h2>
-            <form class="login-form" action="/login" method="post">
-                <div class="form-group">
-                    <label for="email">Email prefix:</label>
-                    <input type="text" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <input type="submit" class="btn btn-primary" value="Login">
-            </form>
-            {% if error %}
-                <div class="error-message">{{ error }}</div>
-            {% endif %}
-        </div>
-        </div>
+    <h1>Pasteur have a current total of {{ form }} stamps!</h1>
+    <h2>Form Leaderboard:</h2>
+    <p>1st place: {{ one[0] }} - {{ one[1] }} stamps<br>2nd place: {{ two[0] }} - {{ two[1] }} stamps<br>3rd place: {{ three[0] }} - {{ three[1] }} stamps</p>
     </div>
+
     <footer class="site-footer">
         <div class="container">
           <div class="row">
@@ -133,8 +64,8 @@
   
             <div class="col-md-4 col-sm-6 col-xs-12">
               <ul class="social-icons">
-                <li><a class="github" href="https://www.github.com/Jack-Lowe-7/"><i class="fa fa-github"></i></a></li>
-                <li><a class="site" href="https://jacklowe.dev"><i class="	fa fa-globe"></i></a></li>
+                <li><a class="github" href="https://github.com/Jack-Lowe-7/"><i class="fa fa-github"></i></a></li>
+                <li><a class="site" href="https://www.jacklowe.dev"><i class="	fa fa-globe"></i></a></li>
                 <li><a class="linkedin" href="https://linkedin.com/in/jacklowe7/"><i class="fa fa-linkedin"></i></a></li>   
               </ul>
             </div>

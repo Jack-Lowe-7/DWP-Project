@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_file
-from databaseComms import authenticate_staff, authenticate_student, get_staff_info, get_student_info, award_stamps, add_student
+from databaseComms import authenticate_staff, authenticate_student, get_staff_info, get_student_info, award_stamps, add_student, leadCheck, formTotal, rankFind
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
@@ -37,7 +37,14 @@ def login():
     # If GET request, render login form
     return render_template('login.html')
 
-# Route for staff dashboard
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    session.pop('is_staff', None)
+    return redirect(url_for('login'))
+
+
+#STAFF
 @app.route('/staff/dashboard')
 def staff_dashboard():
     if 'email' not in session or 'is_staff' not in session or not session['is_staff']:
@@ -70,18 +77,9 @@ def modify():
     return redirect(url_for('staff_dashboard'))
 
 
-# Route for logging out
-@app.route('/logout')
-def logout():
-    session.pop('email', None)
-    session.pop('is_staff', None)
-    return redirect(url_for('login'))
-
-@app.route('/license')
-def license():
-    return render_template('license.html')
 
 
+#ADMIN
 @app.route('/admin', methods=['GET', 'POST'])
 def adminLogin():
     if request.method == 'POST':
@@ -149,6 +147,33 @@ def add_student_page():
         add_student(str(name), str(form), int(stamps), str(emailpre), str(mainclass), str(passw))
         return redirect(url_for('admin_dashboard'))
 
+#MISC PAGES
+@app.route('/license')
+def license():
+    return render_template('license.html')
+
+@app.route('/leaderboard')
+def board():
+    stats = leadCheck()
+    return render_template('leaderboards/leaderboard.html', one=stats[0], two=stats[1], three=stats[2])
+
+@app.route('/leaderboard/pasteur')
+def pasteur():
+    total = formTotal("Pasteur")
+    p = rankFind("Pasteur")
+    return render_template('leaderboards/pasteur.html', form=total, one=p[0], two=p[1], three=p[2])
+
+@app.route('/leaderboard/maxwell')
+def maxwell():
+    total = formTotal("Maxwell")
+    p = rankFind("Maxwell")
+    return render_template('leaderboards/maxwell.html', form=total, one=p[0], two=p[1], three=p[2])
+
+@app.route('/leaderboard/newton')
+def newton():
+    total = formTotal("Newton")
+    p = rankFind("Newton")
+    return render_template('leaderboards/newton.html', form=total, one=p[0], two=p[1], three=p[2])
 
 
 #Errors
