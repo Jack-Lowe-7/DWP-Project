@@ -7,7 +7,7 @@
   <h3 align="center">DWP Stamp Redesign Project</h3>
 
   <p align="center">
-    As part of project with DWP, I have been writing a redesign for the current paper rewards system at my school.
+    As part of project with the Department of Work and Pensions Digital Team, I wrote a redesign for the current paper rewards system at my school.
     <br/>
     <br/>
   </p>
@@ -27,16 +27,16 @@
 
 ## Built With
 
-We used python for this project, and the built in SQLite3 module to handle the database
+We used python for this project, and the built in SQLite3 module to handle the database - this is then served to the client via a Flask based website
 
 ## Getting Started
 
-The web app will be the best final option, however to test the cuurent state you can run a local program/console
+We went  through a few iterations of access - the web app was our final decision, however the local GUI & CLI versions are still in the repo
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This will run in the terminal (3. b.), however it's advised to use the GUI made with the PySimpleGUI module to see the full functionality in terms of a local app. The web app will be however, the best final option.
+This will run in the terminal (2. c.), however it's advised to use the GUI made with the PySimpleGUI module to see the full functionality in terms of a local app. The web app is however, the best option as the others have been deprecated.
 
 ```sh
 pip install pysimplegui
@@ -53,18 +53,17 @@ pip3 install flask
 
 ### Installation
 
-1. Install PySimpleGUI (see above)
-
-2. Clone or download the repo
+1. Clone or download the repo
 
 ```sh
 git clone https://github.com/Jack-Lowe-7/DWP-Project.git
 ```
 
-3. a. For the GUI, run the ```guiAccess.py``` script<br>b. For console, run the ```consoleAccess.py``` script<br>c. For the web app, run 
-```sh
-flask run
-```
+2. a. For the web app, ensuring you are in the ```site``` directory, run
+   ```sh
+   flask run --cert=adhoc
+   ```
+   This will run the webapp out of ```https://[localhost]:500``` <br>b.For the GUI, ensure you have PySimpleGUI, then run the ```guiAccess.py``` script<br>c. For console, simply run the ```consoleAccess.py``` script
 
 
 
@@ -74,7 +73,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/jack-lowe-7/
 
 ## Authors
 
-* **Jack Lowe** - *Student* - [Jack Lowe](https://github.com/Jack-Lowe-7/)
+* **Jack Lowe** - *Student* - [Jack Lowe](https://github.com/Jack-Lowe-7/) - [jacklowe.dev](https://www.jacklowe.dev)
 
 ## Acknowledgements
 
