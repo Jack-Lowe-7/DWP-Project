@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_file
 from databaseComms import authenticate_staff, authenticate_student, get_staff_info, get_student_info, award_stamps, add_student, leadCheck, formTotal, rankFind
 
+#flask run --cert=adhoc
+
+
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Change this to a secure secret key
+app.secret_key = 'b66ba2893267082517aa8760513c665f2eac2eed33b74648ebb39df8e921eee0'  # Change this to a secure secret key
 
 @app.route('/')
 def index():
@@ -209,4 +212,4 @@ def  service_unavailable(error):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, ssl_context='adhoc')
